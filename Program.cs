@@ -9,6 +9,9 @@ namespace game_of_life
 		{
 			game g = new game();
 			g.print ();
+			g.next_step ();
+			g.print ();
+
 		}
 	}
 
@@ -39,7 +42,7 @@ namespace game_of_life
 				}
 				Console.WriteLine ("");
 			}
-			for (int i = 0; i < 3; i++) {
+		/*	for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 3; j++) {
 
 					Console.Write (this.count_neighb(i,j));
@@ -47,7 +50,7 @@ namespace game_of_life
 
 				}
 				Console.WriteLine ("");
-			}
+			}           */
 		}
 
 		private int count_neighb(int i, int j)
@@ -88,9 +91,23 @@ namespace game_of_life
 			return cnt;
 
 		}
-		private void next_step()
+		public void next_step()
 		{
-
+			for (int i = 0; i < 3; i++) 
+				for (int j = 0; j < 3; j++) 
+				{
+					if (arr [i, j] == true) {
+						if (this.count_neighb (i, j) < 2 || this.count_neighb (i, j) > 3)
+							arr2 [i, j] = false;
+						if (this.count_neighb (i, j) == 2 || this.count_neighb (i, j) == 3)
+							arr2 [i, j] = true;
+						
+						}
+					if (arr [i, j] == false)
+					if (this.count_neighb (i, j) == 3)
+						arr2 [i, j] = true;
+				}
+			arr = arr2;
 		}
 
 	
